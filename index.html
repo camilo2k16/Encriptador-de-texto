@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Encriptador de Textos</title>
+  <link rel="stylesheet" href="style.css">
+  <script>
+    function encriptar() {
+      var textoOriginal = document.getElementById("textoOriginal").value;
+      var textoEncriptado = "";
+      
+      for (var i = 0; i < textoOriginal.length; i++) {
+        var letra = textoOriginal[i];
+        var letraEncriptada = "";
+        
+        switch (letra) {
+          case "e":
+            letraEncriptada = "enter";
+            break;
+          case "i":
+            letraEncriptada = "imes";
+            break;
+          case "a":
+            letraEncriptada = "ai";
+            break;
+          case "o":
+            letraEncriptada = "ober";
+            break;
+          case "u":
+            letraEncriptada = "ufat";
+            break;
+          default:
+            letraEncriptada = letra;
+            break;
+        }
+        
+        textoEncriptado += letraEncriptada;
+      }
+      
+      document.getElementById("textoEncriptado").value = textoEncriptado;
+    }
+    
+    function desencriptar() {
+      var textoEncriptado = document.getElementById("textoEncriptado").value;
+      var textoOriginal = "";
+      
+      for (var i = 0; i < textoEncriptado.length; i++) {
+        var letraEncriptada = "";
+        
+        if (textoEncriptado[i] === "e" && textoEncriptado[i + 1] === "n" && textoEncriptado[i + 2] === "t" && textoEncriptado[i + 3] === "e") {
+          letraEncriptada = "e";
+          i += 3;
+        } else if (textoEncriptado[i] === "i" && textoEncriptado[i + 1] === "m" && textoEncriptado[i + 2] === "e" && textoEncriptado[i + 3] === "s") {
+          letraEncriptada = "i";
+          i += 3;
+        } else if (textoEncriptado[i] === "a" && textoEncriptado[i + 1] === "i") {
+          letraEncriptada = "a";
+          i += 1;
+        } else if (textoEncriptado[i] === "o" && textoEncriptado[i + 1] === "b" && textoEncriptado[i + 2] === "e" && textoEncriptado[i + 3] === "r") {
+          letraEncriptada = "o";
+          i += 3;
+        } else if (textoEncriptado[i] === "u" && textoEncriptado[i + 1] === "f" && textoEncriptado[i + 2] === "a" && textoEncriptado[i + 3] === "t") {
+          letraEncriptada = "u";
+          i += 3;
+        } else {
+          letraEncriptada = textoEncriptado[i];
+        }
+        
+        textoOriginal += letraEncriptada;
+      }
+      
+      document.getElementById("textoOriginal").value = textoOriginal;
+    }
+  </script>
+</head>
+<body>
+  <div class="container">
+    <h1>Encriptador de Textos</h1>
+    
+    <div class= "Columna1">
+      <label for="textoOriginal">Texto Original:</label> 
+      <input type="text" placeholder="Digite el texto a encriptar" id="textoOriginal" name="textoOriginal"  />
+    </div>
+    
+    <div class= "Columna2">
+      <label for="textoEncriptado">Texto Encriptado:</label>
+      <input type="text" id="textoEncriptado" name="textoEncriptado" />
+    </div>
+    <div class="clear"></div>
+    <div class="botones-principales">
+      <button onclick="encriptar()">Encriptar</button>
+      <button onclick="desencriptar()">Desencriptar</button>
+    </div>
+  </div>
+</body>
+</html>
